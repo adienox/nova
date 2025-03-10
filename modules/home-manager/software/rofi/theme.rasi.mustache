@@ -1,0 +1,98 @@
+* {
+  background:           #{{base00}}B3;
+  background-selected:  #{{base01}}4D;
+  foreground:           #{{base05}};
+  foreground-selected:  #{{base09}};
+  placeholder-color:    #{{base04}}80;
+  accent:               #{{base09}};
+  base:                 #{{base02}};
+  background-color:     transparent;
+}
+
+mainbox {
+  children: [inputbar, message, listview];
+}
+
+button {
+  horizontal-align: 0.5;
+  padding: 10px;
+  text-color: @foreground;
+  vertical-align: 0.5;
+}
+
+button selected {
+  text-color: @accent;
+}
+
+element {
+  padding: 8px;
+  text-color: @foreground;
+}
+
+element-icon {
+  size: 0.9em;
+}
+
+element selected {
+  text-color: @foreground-selected;
+  border-radius: 8px;
+  background-color: @background-selected;
+}
+
+entry {
+  margin: 20px 10px 0px 10px;
+  padding: 6px;
+  text-color: @foreground;
+  placeholder: "Search...";
+  placeholder-color: @placeholder-color;
+}
+
+inputbar {
+  border-radius: 5px;
+  children: [prompt, entry];
+  padding: 2px;
+}
+
+listview {
+  border: 0px 0px 0px;
+  lines: 8;
+  columns: 1;
+  margin: 10px 20px;
+  padding: 6px 0px 0px;
+}
+
+message {
+  margin: 10px 20px;
+}
+
+textbox {
+  text-color: @foreground;
+}
+
+mode-switcher {
+  spacing: 0;
+}
+
+prompt {
+  background-color: @accent;
+  border-radius: 3px;
+  margin: 20px 20px 0px 20px;
+  padding: 6px;
+  text-color: @background;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: ":";
+}
+
+window {
+  background-color: @background;
+  border-color: @accent;
+  border: 0px;
+  border-radius: 10px;
+}
+
+element-text, element-icon, mode-switcher {
+  text-color: inherit;
+}
