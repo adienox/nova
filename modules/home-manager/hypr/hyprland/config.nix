@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -14,15 +15,15 @@
         "__GL_VENDOR_LIBRARY_NAME,nvidia"
         "NVD_BACKEND,direct"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        "XDG_SESSION_TYPE,wayland"
       ];
       monitor = [
         "eDP-1,1920x1080@120,auto,1"
         "HDMI-A-1,2560x1440@144,auto,1"
       ];
-      # exec-once = [
-      #   "${config.xdg.configHome}/assets/scripts/hypr/autostart.sh"
-      # ];
+      exec-once = [
+        "${pkgs.waybar}/bin/waybar"
+        "${pkgs.mako}/bin/mako"
+      ];
       input = {
         kb_layout = "us";
 
@@ -53,7 +54,7 @@
       };
 
       decoration = {
-        rounding = 5;
+        rounding = 8;
 
         shadow = {
           range = 5;
@@ -64,9 +65,9 @@
 
         blur = {
           enabled = true;
-          size = 3;
-          passes = 5;
-          contrast = 1.2;
+          size = 20;
+          passes = 3;
+          #contrast = 1.2;
           ignore_opacity = true;
           new_optimizations = true;
         };

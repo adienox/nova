@@ -22,6 +22,7 @@
     # python stuff
     python313Packages.flake8
     python313Packages.python-lsp-server
+    python313Packages.ipython
 
     # c stuff
     clang-tools
@@ -57,7 +58,6 @@
       epkgs: with epkgs; [
         pdf-tools
         org-pdftools
-        org-gcal
         mu4e
         nov
         djvu

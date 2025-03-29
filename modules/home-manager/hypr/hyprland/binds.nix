@@ -28,13 +28,8 @@ in
 
         # Rofi
         "$MOD, B, exec, $SCRIPTS/rofi.sh bluetooth"
-        "$MOD, I, exec, $SCRIPTS/rofi.sh emoji"
-        "$MOD, Space, exec, $SCRIPTS/rofi.sh drun"
-        "$ALT, Space, exec, $SCRIPTS/rofi.sh calc"
-
-        # Clipboard
-        "$MOD, V, exec, $SCRIPTS/rofi.sh clipboard"
-        "$MOD SHIFT, V, exec, cliphist wipe"
+        "$MOD, I, exec, rofi -show emoji"
+        "$MOD, Space, exec, rofi -show drun"
 
         # Hyprland Bindings
         "$MOD SHIFT, Q, killactive, "
@@ -47,6 +42,7 @@ in
 
         # Misc
         ", F11, exec, hyprctl dispatch fullscreen"
+        ", F9, exec, pkill waybar || waybar"
         "$MOD SHIFT, P, exec, $SCRIPTS/window-pin.sh"
         "$MOD SHIFT, W, exec, $SCRIPTS/switchwall.sh"
         "$MOD, C, exec, hyprctl dispatch centerwindow"

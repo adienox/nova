@@ -16,6 +16,7 @@
       hyprlock.enable = false;
       kde.enable = false;
       gnome.enable = false;
+      waybar.enable = false;
       kitty.variant256Colors = true;
       firefox = {
         firefoxGnomeTheme.enable = true;
@@ -41,7 +42,15 @@
         name = "Apple Color Emoji";
       };
 
-      sizes.terminal = 14;
+      sizes = {
+        terminal = 14;
+        popups = 12;
+      };
+    };
+
+    opacity = {
+      terminal = lib.mkDefault 0.7;
+      popups = 0.7;
     };
 
     iconTheme = {
@@ -65,7 +74,8 @@
 
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = lib.mkDefault "dark";
-    image = ./wallpaper.jpg;
+    # just setting this to make stylix work
+    image = config.lib.stylix.pixel "base00";
   };
 
   specialisation.light.configuration.stylix = {
@@ -73,11 +83,12 @@
     polarity = "light";
     cursor.name = "Bibata-Modern-Classic";
 
+    opacity.terminal = 0.6;
+
     override = {
       base00 = "#FBF7F0";
       base01 = "#efe9dd";
       base02 = "#c9b9b0";
-      #e8e3d7
     };
   };
 
@@ -93,7 +104,6 @@
           procps
         ];
         text = ''
-          rm /home/nox/.config/hyprpanel/config.json
           "$(home-manager generations | head -1 | rg -o '/[^ ]*')"/specialisation/light/activate
           dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
           pkill -SIGUSR1 zsh
@@ -114,7 +124,6 @@
           procps
         ];
         text = ''
-          rm /home/nox/.config/hyprpanel/config.json
           "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate
           dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
           pkill -SIGUSR1 zsh

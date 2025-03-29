@@ -13,6 +13,7 @@
     wl-clipboard # Clipboard
     socat
     brightnessctl
+    blueman
 
     # recorder and screenshot
     grim

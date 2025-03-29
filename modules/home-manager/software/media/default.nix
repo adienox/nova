@@ -1,7 +1,12 @@
 { pkgs, ... }:
 {
-  imports = [ ./mpv.nix ];
+  imports = [
+    ./mpv.nix
+    ./hw-volume.nix
+    ./rnnoise.nix
+  ];
   home.packages = with pkgs; [
-    pavucontrol
+    pwvucontrol
+    helvum
   ];
 }

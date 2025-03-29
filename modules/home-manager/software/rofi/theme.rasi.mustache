@@ -1,98 +1,317 @@
 * {
-  background:           #{{base00}}B3;
-  background-selected:  #{{base01}}4D;
-  foreground:           #{{base05}};
-  foreground-selected:  #{{base09}};
-  placeholder-color:    #{{base04}}80;
-  accent:               #{{base09}};
-  base:                 #{{base02}};
-  background-color:     transparent;
+    background:             #{{base00}}B3;
+    background-solid:       #{{base00}}FF;
+    background-alt:         #{{base01}}4D;
+    foreground:             #{{base05}}FF;
+    selected:               #{{base0A}}FF;
+    border-highlight:       #{{base02}}1A;
+    selected-tinted:        #{{base09}}99;
+    active:                 #{{base0B}}FF;
+    urgent:                 #{{base08}}FF;
+    font-normal:            "CaskaydiaCove Nerd Font 11";
+    font-bold:              "CaskaydiaCove Nerd Font Bold 11";
+}
+
+configuration {
+	modi:                       "drun,emoji,ssh,window,filebrowser,calc";
+    show-icons:                 true;
+    display-drun:               "  Apps";
+    display-calc:               "󰪚  Calc";
+    display-emoji:              "  Emoji";
+    display-filebrowser:        "  Files";
+    display-window:             "  Windows";
+	display-ssh:                "  SSH";
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c} · {t}";
+}
+
+* {
+    font:                        var(font-normal);
+}
+
+/* Main Window */
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       700px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border-radius:               10px;
+    border-color:                @border-highlight;
+    border:                      1px;
+    cursor:                      "default";
+    background-color:            @background;
 }
 
 mainbox {
-  children: [inputbar, message, listview];
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     20px;
+    border-radius:               0px 0px 0px 0px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "message", "custombox" ];
 }
 
-button {
-  horizontal-align: 0.5;
-  padding: 10px;
-  text-color: @foreground;
-  vertical-align: 0.5;
+custombox {
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @selected;
+    orientation:                 horizontal;
+    children:                    [ "mode-switcher", "listview" ];
 }
 
-button selected {
-  text-color: @accent;
-}
-
-element {
-  padding: 8px;
-  text-color: @foreground;
-}
-
-element-icon {
-  size: 0.9em;
-}
-
-element selected {
-  text-color: @foreground-selected;
-  border-radius: 8px;
-  background-color: @background-selected;
-}
-
-entry {
-  margin: 20px 10px 0px 10px;
-  padding: 6px;
-  text-color: @foreground;
-  placeholder: "Search...";
-  placeholder-color: @placeholder-color;
-}
-
+/* inputbar */
 inputbar {
-  border-radius: 5px;
-  children: [prompt, entry];
-  padding: 2px;
-}
-
-listview {
-  border: 0px 0px 0px;
-  lines: 8;
-  columns: 1;
-  margin: 10px 20px;
-  padding: 6px 0px 0px;
-}
-
-message {
-  margin: 10px 20px;
-}
-
-textbox {
-  text-color: @foreground;
-}
-
-mode-switcher {
-  spacing: 0;
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     14px 20px;
+    border-radius:               8px;
+    border-color:                var(border-highlight);
+    border:                      1px;
+    background-color:            @background-alt;
+    text-color:                  @selected;
+    children:                    [ "textbox-prompt-colon", "entry" ];
 }
 
 prompt {
-  background-color: @accent;
-  border-radius: 3px;
-  margin: 20px 20px 0px 20px;
-  padding: 6px;
-  text-color: @background;
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
 }
 
 textbox-prompt-colon {
-  expand: false;
-  str: ":";
+    enabled:                     true;
+    padding:                     5px 9px 0px 2px;
+    expand:                      false;
+    str:                         " ";
+    background-color:            transparent;
+    text-color:                  @selected;
 }
 
-window {
-  background-color: @background;
-  border-color: @accent;
-  border: 0px;
-  border-radius: 10px;
+entry {
+    enabled:                     true;
+    padding:                     5px 0px;
+    background-color:            transparent;
+    text-color:                  @selected;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    font:                        @font-bold;
+    placeholder-color:           @selected-tinted;
 }
 
-element-text, element-icon, mode-switcher {
-  text-color: inherit;
+num-filtered-rows {
+    enabled:                     true;
+    expand:                      false;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+textbox-num-sep {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "/";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+num-rows {
+    enabled:                     true;
+    expand:                      false;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+case-indicator {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+/* Listview */
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       7;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   true;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    spacing:                     5px;
+    margin:                      0px;
+    padding:                     0px;
+    border-radius:               0px;
+    background-color:            transparent;
+    text-color:                  @selected;
+    cursor:                      "default";
+}
+
+scrollbar {
+    handle-width:                3px;
+    handle-color:                @selected;
+    border-radius:               10px;
+    border-color:                var(border-highlight);
+    border:                      1px;
+    background-color:            @background-alt;
+}
+
+/* Elements */
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     10px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @selected;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            var(background-alt);
+    text-color:                  var(selected);
+    border-color:                var(border-highlight);
+    border:                      1px;
+}
+
+element alternate.normal {
+    background-color:            var(background-alt);
+    text-color:                  var(selected);
+    border-color:                var(border-highlight);
+    border:                      1px;
+}
+
+element selected.normal {
+    background-color:            var(selected);
+    text-color:                  var(background-solid);
+}
+
+element normal.urgent {
+    background-color:            var(background-alt);
+    text-color:                  var(urgent);
+    border-color:                var(border-highlight);
+    border:                      1px;
+}
+
+element alternate.urgent {
+    background-color:            var(background-alt);
+    text-color:                  var(urgent);
+    border-color:                var(border-highlight);
+    border:                      1px;
+}
+
+element selected.urgent {
+    background-color:            var(urgent);
+    text-color:                  var(background-solid);
+}
+
+element normal.active {
+    background-color:            var(background-alt);
+    text-color:                  var(active);
+    border-color:                var(border-highlight);
+    border:                      1px;
+}
+
+element alternate.active {
+    background-color:            var(background-alt);
+    text-color:                  var(active);
+    border-color:                var(border-highlight);
+    border:                      1px;
+}
+
+element selected.active {
+    background-color:            var(active);
+    text-color:                  var(background-solid);
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        24px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/* mode-switcher */
+mode-switcher{
+    enabled:                     true;
+    expand:                      false;
+    orientation:                 vertical;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px 0px;
+    border-radius:               0px;
+    background-color:            transparent;
+    text-color:                  @selected;
+}
+
+button {
+    padding:                     0px 20px 0px 20px;
+    border-radius:               8px;
+    border-color:                var(border-highlight);
+    border:                      1px;
+    background-color:            @background-alt;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    cursor:                      pointer;
+}
+
+button selected {
+    background-color:            var(selected);
+    text-color:                  var(background-solid);
+}
+
+/* message */
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border-color:                var(border-highlight);
+    border:                      1px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @selected;
+}
+
+textbox {
+    padding:                     12px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  @selected;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   none;
+    placeholder-color:           @foreground;
+    blink:                       true;
+    markup:                      true;
+}
+
+error-message {
+    padding:                     10px;
+    border:                      2px solid;
+    border-radius:               8px;
+    border-color:                @selected;
+    background-color:            @background;
+    text-color:                  @urgent;
 }

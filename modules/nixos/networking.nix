@@ -19,17 +19,16 @@
       allowedTCPPorts = [
         1337
         22000 # syncthing
-        8080 # anki
-        9090 # calibre
         2222 # sftp
-        5050
         4040
+        5050
+        8080 # calibre
+        9090 # calibre
         5040
       ];
       allowedUDPPorts = [
         1337
         8080
-        9090
         2222
       ];
       allowedTCPPortRanges = [

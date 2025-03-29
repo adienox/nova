@@ -18,9 +18,11 @@
     secrets = {
       "api/openai" = { };
       "api/gemini" = { };
+      "api/groq" = { };
       "api/perplexity" = { };
       "api/todoist" = { };
       "identity/mail" = { };
+      "identity/url" = { };
       "identity/gpg" = { };
       "identity/gcal/id" = { };
       "identity/gcal/secret" = { };
@@ -28,6 +30,12 @@
       "identity/gdrive/secret" = { };
       "identity/gtasks/id" = { };
       "identity/gtasks/secret" = { };
+      "identity/freshrss/url" = { };
+      "identity/freshrss/pass" = { };
+      "identity/wallabag/id" = { };
+      "identity/wallabag/secret" = { };
+      "identity/wallabag/user" = { };
+      "identity/wallabag/pass" = { };
     };
   };
 }

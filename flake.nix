@@ -11,8 +11,8 @@
 
     xremap.url = "github:xremap/nix-flake";
 
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -23,17 +23,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pyprland.url = "github:hyprland-community/pyprland";
-
     stylix.url = "github:danth/stylix";
 
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    betterfox = {
-      url = "github:heitoraugustoln/betterfox-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

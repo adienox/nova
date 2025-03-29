@@ -14,7 +14,6 @@
       touch_scroll_multiplier = "3.0";
 
       open_url_with = "default";
-      #shell = "${default.terminal.shell}";
 
       # Copying and Selecting
       copy_on_select = false;
@@ -32,13 +31,11 @@
       listen_on = "unix:/tmp/kitty";
 
       # Window Settings
-      window_padding_width = 4;
+      window_padding_width = 14;
       confirm_os_window_close = 0;
       hide_window_decorations = true;
       tab_bar_style = "powerline";
-      term = "xterm-kitty";
-
-      background = "#000000";
+      term = "xterm-256color";
     };
     keybindings = {
       "f1" = "debug_config";

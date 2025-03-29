@@ -8,16 +8,19 @@
     gvfs.enable = true; # Nautilus Trash
     gnome.sushi.enable = true; # Nautilus file preview
     dictd.enable = true;
+    blueman.enable = true;
 
     xserver.xkb = {
       layout = "us";
       variant = "";
     };
+
     locate = {
       enable = true;
       package = pkgs.mlocate;
       interval = "hourly";
     };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -47,6 +50,13 @@
 
     # needed for GNOME services outside of GNOME Desktop
     dbus.packages = [ pkgs.gcr ];
+
+    syncthing = {
+      enable = true;
+      user = "nox";
+      openDefaultPorts = true;
+      dataDir = "/home/nox/Sync";
+    };
   };
 
   systemd = {

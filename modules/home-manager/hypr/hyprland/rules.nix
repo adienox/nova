@@ -4,11 +4,7 @@
     settings = {
       windowrule = [
         # Floating Rules
-        "float, title:^(fly_is_kitty)$"
-        "float, title:^(all_is_kitty)$"
-        "float, title:^(Discord Popout)$"
         "float, yad"
-        "float, floating"
         "float, file_progress"
         "float, confirm"
         "float, dialog"
@@ -19,7 +15,6 @@
         "float, confirmreset"
         "float, title:Open File"
         "float, title:branchdialog"
-        "float, feh"
         "float, org.pulseaudio.pavucontrol"
         "float, file-roller"
         "float, title:DevTools"
@@ -79,27 +74,19 @@
         "opacity 1, class:^(floating)$"
         "opacity 1, class:^(discord), fullscreen:1"
 
-        "opacity 0.9, class:^(Anki)$"
+        "opacity 0.9, class:^(zen)$"
         "opacity 0.9, class:^(vesktop)$"
-        "opacity 0.9, class:^(calibre-gui)$"
 
-        "float, class:^(Anki)$, title:^(Add)$"
-        "center, class:^(Anki)$, title:^(Add)$"
-        "float, class:^(Anki)$, title:^(Preferences)$"
-        "center, class:^(Anki)$, title:^(Preferences)$"
-
-        # Wlogout
-        "noanim, class:^(wlogout)$, title:^(wlogout)$"
-        "noshadow, class:^(wlogout)$, title:^(wlogout)$"
-
-        "bordersize 0, floating:0, onworkspace:w[tv1]"
-        "rounding 0, floating:0, onworkspace:w[tv1]"
-        "bordersize 0, floating:0, onworkspace:f[1]"
-        "rounding 0, floating:0, onworkspace:f[1]"
+        # make single app appear with no border
+        # "bordersize 0, floating:0, onworkspace:w[tv1]"
+        # "rounding 0, floating:0, onworkspace:w[tv1]"
+        # "bordersize 0, floating:0, onworkspace:f[1]"
+        # "rounding 0, floating:0, onworkspace:f[1]"
       ];
       workspace = [
-        "w[tv1], gapsout:0, gapsin:0"
-        "f[1], gapsout:0, gapsin:0"
+        # make single app appear with no border
+        # "w[tv1], gapsout:0, gapsin:0"
+        # "f[1], gapsout:0, gapsin:0"
         "1, monitor:eDP-1, default:true"
         "2, monitor:eDP-1"
         "3, monitor:eDP-1"
@@ -115,16 +102,18 @@
       layerrule = [
         "blur, rofi"
         "ignorezero, rofi"
-
         "animation popin 50%, rofi"
-        "animation slide, waybar"
-        "noanim, swww"
-        "blur, logout_dialog"
 
+        "blur, anyrun"
+        "ignorealpha 0.5, anyrun"
+
+        "animation slide, waybar"
         "blur, waybar"
-        "ignorezero, waybar"
         "xray 1, waybar"
         "ignorealpha 0.39, waybar"
+
+        "noanim, swww"
+        "blur, logout_dialog"
 
         "blur, notifications"
         "ignorezero, notifications"
