@@ -2,15 +2,13 @@
   config,
   ...
 }:
-let
-  colors = config.lib.stylix.colors;
-in
 {
   wayland.windowManager.hyprland = {
     settings = {
       "$MOD" = "SUPER";
       "$ALT" = "ALT";
       "$SCRIPTS" = "${config.xdg.configHome}/assets/scripts/hypr";
+      "$ROFI" = "${config.xdg.configHome}/assets/scripts/rofi";
       "$TERM" = "kitty";
       "$FLOATING_TERM" = "kitty --class floating -e";
 
@@ -22,28 +20,28 @@ in
         # Applications
         "$MOD, W, exec, $SCRIPTS/focus.sh zen zen"
         "$MOD, E, exec, $SCRIPTS/emacs.sh"
-        "$MOD, X, exec, hyprlock"
 
         ", XF86Calculator, exec, gnome-calculator"
 
         # Rofi
-        "$MOD, B, exec, $SCRIPTS/rofi.sh bluetooth"
+        "$MOD, B, exec, rofi-bluetooth"
         "$MOD, I, exec, rofi -show emoji"
         "$MOD, Space, exec, rofi -show drun"
+        "$MOD, X, exec, $ROFI/powermenu.sh"
+        "$MOD, C, exec, $ROFI/network-manager.sh"
 
         # Hyprland Bindings
         "$MOD SHIFT, Q, killactive, "
         "$MOD, F, togglefloating, "
-        "$MOD, P, pseudo,"
+        "$MOD, P, exec, $SCRIPTS/window-pin.sh"
 
         # Scroll through workspace
-        "SUPER,mouse_down,workspace,e+1"
-        "SUPER,mouse_up,workspace,e-1"
+        "$MOD, mouse_down, workspace, e+1"
+        "$MOD, mouse_up, workspace, e-1"
 
         # Misc
         ", F11, exec, hyprctl dispatch fullscreen"
         ", F9, exec, pkill waybar || waybar"
-        "$MOD SHIFT, P, exec, $SCRIPTS/window-pin.sh"
         "$MOD SHIFT, W, exec, $SCRIPTS/switchwall.sh"
         "$MOD, C, exec, hyprctl dispatch centerwindow"
 
@@ -112,9 +110,9 @@ in
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 
         # Screenshot
-        ", Print, exec, $SCRIPTS/screenshot.sh full ${colors.base09}"
-        "SHIFT, Print, exec, $SCRIPTS/screenshot.sh partial ${colors.base09}"
-        "$MOD SHIFT, T, exec, $SCRIPTS/screenshot.sh ocr ${colors.base09}"
+        ", Print, exec, $ROFI/screenshot.sh"
+        "SHIFT, Print, exec, hyprshot -m region"
+        "$MOD SHIFT, T, exec, $ROFI/screenshot.sh"
 
         # Recording
         "$MOD, R, exec, $SCRIPTS/screenrecord.sh"

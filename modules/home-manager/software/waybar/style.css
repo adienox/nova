@@ -32,18 +32,14 @@ window#waybar.solo {
 #custom-playerlabel,
 #battery,
 #bluetooth,
-#backlight,
+#network,
 #pulseaudio,
 #custom-dunst,
 #custom-notification,
 #custom-recorder,
 #window,
 #clock,
-#tray,
-#custom-power,
-#custom-quit,
-#custom-lock,
-#custom-reboot {
+#tray {
     padding: 2px 14px;
     border-radius: 4px;
     background-color: @base01;
@@ -51,27 +47,20 @@ window#waybar.solo {
     color: @base05;
 }
 
-#custom-quit,
-#custom-lock,
-#custom-reboot,
+#bluetooth.battery,
+#network.strength {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+    padding-left: 0;
+}
+
 #clock.date,
 #pulseaudio.volume {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-right: 0;
     padding-right: 0;
-}
-
-#custom-quit,
-#custom-lock,
-#custom-reboot {
-    padding-right: 7px;
-    border-radius: 0;
-}
-
-#custom-quit {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
 }
 
 #submap {
@@ -98,16 +87,16 @@ window#waybar.solo {
     color: @base0F;
 }
 
-#backlight {
+#network {
     color: @base07;
+}
+
+#network.disconnected {
+    color: @base08;
 }
 
 #pulseaudio {
     color: @base0A;
-}
-
-#custom-power {
-    color: @base08;
 }
 
 #custom-privacy {

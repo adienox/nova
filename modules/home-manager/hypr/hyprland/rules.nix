@@ -4,89 +4,70 @@
     settings = {
       windowrule = [
         # Floating Rules
-        "float, yad"
-        "float, file_progress"
-        "float, confirm"
-        "float, dialog"
-        "float, download"
-        "float, notification"
-        "float, error"
-        "float, splash"
-        "float, confirmreset"
-        "float, title:Open File"
-        "float, title:branchdialog"
-        "float, org.pulseaudio.pavucontrol"
-        "float, file-roller"
-        "float, title:DevTools"
-        "float, org.pwmt.zathura"
-        "float, imv"
-        "float, blueman-manager"
-        "float, org.gnome.Calculator"
-        "float, org.gnome.clocks"
+        "float, class:yad"
+        "float, class:file_progress"
+        "float, class:confirm"
+        "float, class:dialog"
+        "float, class:download"
+        "float, class:notification"
+        "float, class:error"
+        "float, class:splash"
+        "float, class:confirmreset"
+        "float, class:title:Open File"
+        "float, class:title:branchdialog"
+        "float, class:org.pulseaudio.pavucontrol"
+        "float, class:file-roller"
+        "float, class:title:DevTools"
+        "float, class:org.pwmt.zathura"
+        "float, class:imv"
+        "float, class:blueman-manager"
+        "float, class:org.gnome.Calculator"
+        "float, class:org.gnome.clocks"
 
         #Size, Move, and Pin rules
-        "pin, title:^(Discord Popout)$"
-
         "move 1430 45, title:^(Discord Popout)$"
-        "move 560 290, title:^(fly_is_kitty)$"
-
+        "pin, title:^(Discord Popout)$"
         "size 485 300, title:^(Discord Popout)$"
-        "size 800 500, ^(floating)$"
-        "size 800 500, ^(imv)$"
+        "size 800 500, class:floating"
+        "size 800 500, class:imv"
 
         # Animation Rules
         "animation popin, title:^(Discord Popout)$"
-
-        # Workspace Rules
-        "workspace 3, ^(mpv)$"
-        "workspace 4, ^(org.telegram.desktop)$"
-        "workspace 5, ^(vesktop)$"
-        "workspace 9, ^(org.rncbc.qpwgraph)$"
-
-        # Fullscreen Rules
-        "fullscreen, emacs"
-        "fullscreen, mpv"
-        "fullscreen, org.pwmt.zathura"
-      ];
-      windowrulev2 = [
-        # Utils
-        "noshadow, floating:0"
         "animation popin, floating:1"
 
+        # Workspace Rules
+        "workspace 3, class:mpv"
+        "workspace 4, class:org.telegram.desktop"
+        "workspace 5, class:vesktop"
+
+        # Fullscreen Rules
+        "fullscreen, class:emacs"
+        "fullscreen, class:mpv"
+        "fullscreen, class:org.pwmt.zathura"
+
         # centering
-        "center, class:^(firefox)$, title:^(Enter name of file to save to…)$"
-        "center, class:^(floating)$"
-        "center, class:^(imv)$"
+        "center, class:floating"
+        "center, class:imv"
 
         # picture in picture
         "workspace 1, title:Picture-in-Picture"
-        "fullscreen, title:Picture-in-Picture"
+        "fullscreen,  title:Picture-in-Picture"
 
         # Idle inhibit rules
-        "idleinhibit fullscreen, class:^(firefox)$"
-        "idleinhibit focus, class:^(ticktick)$"
-        "idleinhibit focus, class:^(mpv)$"
-        "idleinhibit focus, class:^(discord)$"
+        "idleinhibit fullscreen, class:zen"
+        "idleinhibit fullscreen, class:mpv"
+        "idleinhibit focus,      class:discord"
 
         # Opacity Rules
         "opacity 0.7, floating:1"
 
-        "opacity 1, class:^(floating)$"
-        "opacity 1, class:^(discord), fullscreen:1"
+        "opacity 1, class:floating"
+        "opacity 1, class:discord, fullscreen:1"
 
-        "opacity 0.9, class:^(zen)$"
-        "opacity 0.9, class:^(vesktop)$"
-
-        # make single app appear with no border
-        # "bordersize 0, floating:0, onworkspace:w[tv1]"
-        # "rounding 0, floating:0, onworkspace:w[tv1]"
-        # "bordersize 0, floating:0, onworkspace:f[1]"
-        # "rounding 0, floating:0, onworkspace:f[1]"
+        "opacity 0.9, class:zen"
+        "opacity 0.9, class:vesktop"
       ];
       workspace = [
-        # make single app appear with no border
-        # "w[tv1], gapsout:0, gapsin:0"
-        # "f[1], gapsout:0, gapsin:0"
         "1, monitor:eDP-1, default:true"
         "2, monitor:eDP-1"
         "3, monitor:eDP-1"

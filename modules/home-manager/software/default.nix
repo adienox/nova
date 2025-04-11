@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    ./anyrun
     ./swww.nix
     ./xremap.nix
     ./darkman.nix
@@ -21,9 +20,10 @@
     inputs.zen-browser.packages.${pkgs.system}.default
     calibre
     maestral
+    scrcpy
+    anki-bin
   ];
 
-  services.blueman-applet.enable = true;
   services.mpris-proxy.enable = true;
 
   xdg.configFile."vesktop/themes/custom.css".text = ''

@@ -23,6 +23,7 @@
       exec-once = [
         "${pkgs.waybar}/bin/waybar"
         "${pkgs.mako}/bin/mako"
+        "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store"
       ];
       input = {
         kb_layout = "us";

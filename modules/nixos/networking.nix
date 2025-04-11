@@ -17,19 +17,12 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [
-        1337
-        22000 # syncthing
-        2222 # sftp
-        4040
-        5050
         8080 # calibre
         9090 # calibre
-        5040
+        8765 # anki
       ];
       allowedUDPPorts = [
-        1337
-        8080
-        2222
+        8765 #anki
       ];
       allowedTCPPortRanges = [
         {

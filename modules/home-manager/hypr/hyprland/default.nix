@@ -19,6 +19,7 @@
     grim
     slurp
     tesseract # ocr
+    hyprshot
     wf-recorder
   ];
 

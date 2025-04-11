@@ -4,6 +4,15 @@
   lib,
   ...
 }:
+let
+  shellPkgs = with pkgs; [
+    home-manager
+    coreutils
+    ripgrep
+    dconf
+    procps
+  ];
+in
 {
 
   stylix = {
@@ -17,11 +26,8 @@
       kde.enable = false;
       gnome.enable = false;
       waybar.enable = false;
+      qt.enable = true;
       kitty.variant256Colors = true;
-      firefox = {
-        firefoxGnomeTheme.enable = true;
-        profileNames = [ "nox" ];
-      };
     };
 
     fonts = {
@@ -63,7 +69,7 @@
     cursor = {
       package = pkgs.bibata-cursors;
       name = lib.mkDefault "Bibata-Modern-Ice";
-      size = lib.mkDefault 24;
+      size = 24;
     };
 
     override = lib.mkDefault {
@@ -96,13 +102,7 @@
     (lib.lowPrio (
       pkgs.writeShellApplication {
         name = "toggle-theme";
-        runtimeInputs = with pkgs; [
-          home-manager
-          coreutils
-          ripgrep
-          dconf
-          procps
-        ];
+        runtimeInputs = shellPkgs;
         text = ''
           "$(home-manager generations | head -1 | rg -o '/[^ ]*')"/specialisation/light/activate
           dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
@@ -116,13 +116,7 @@
     home.packages = [
       (pkgs.writeShellApplication {
         name = "toggle-theme";
-        runtimeInputs = with pkgs; [
-          home-manager
-          coreutils
-          ripgrep
-          dconf
-          procps
-        ];
+        runtimeInputs = shellPkgs;
         text = ''
           "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate
           dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"

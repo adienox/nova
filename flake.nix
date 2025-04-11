@@ -11,17 +11,7 @@
 
     xremap.url = "github:xremap/nix-flake";
 
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland.url = "github:hyprwm/hyprland";
-
-    hyprpanel = {
-      url = "github:jas-singhfsu/hyprpanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     stylix.url = "github:danth/stylix";
 

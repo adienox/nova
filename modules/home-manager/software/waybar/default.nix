@@ -5,6 +5,7 @@ in
 {
   home.packages = with pkgs; [
     noto-fonts-cjk-sans # Fonts
+    icomoon-feather
   ];
 
   programs.waybar = {
@@ -26,14 +27,12 @@ in
       modules-center = [ "custom/playerlabel" ];
 
       modules-right = [
-        "custom/recorder"
         "battery"
-        "bluetooth"
+        "group/bt"
+        "group/net"
         "group/audio"
-        "custom/notification"
         "group/time"
         "tray"
-        "group/power"
       ];
 
       "hyprland/workspaces" = {
@@ -75,18 +74,13 @@ in
       };
 
       privacy = {
-        icon-spacing = 4;
-        icon-size = 20;
-        transition-duration = 250;
         modules = [
           {
             type = "screenshare";
-            tooltip = true;
             tooltip-icon-size = 20;
           }
           {
             type = "audio-in";
-            tooltip = true;
             tooltip-icon-size = 20;
           }
         ];
@@ -123,23 +117,50 @@ in
 
       bluetooth = {
         format = "";
-        on-click = "blueman-manager";
         format-connected = " {device_alias}";
-        format-connected-battery = " {device_alias} {device_battery_percentage}%";
+        format-connected-battery = " {device_alias}";
       };
 
-      backlight = {
-        format = "{icon} {percent}%";
-        format-icons = [
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
-          ""
+      "bluetooth#battery" = {
+        format = "";
+        format-connected = "";
+        format-connected-battery = "{device_battery_percentage}%";
+      };
+
+      "group/bt" = {
+        orientation = "inherit";
+        drawer = {
+          transition-duration = 500;
+          transition-left-to-right = true;
+        };
+        modules = [
+          "bluetooth"
+          "bluetooth#battery"
+        ];
+      };
+
+      network = {
+        format-wifi = "  {essid}";
+        format-disconnected = "";
+        tooltip-format = "{ipaddr}/{frequency}GHz";
+        interval = 7;
+      };
+
+      "network#strength" = {
+        format-wifi = "({signalStrength}%)";
+        tooltip = false;
+        interval = 7;
+      };
+
+      "group/net" = {
+        orientation = "inherit";
+        drawer = {
+          transition-duration = 500;
+          transition-left-to-right = true;
+        };
+        modules = [
+          "network"
+          "network#strength"
         ];
       };
 
@@ -225,45 +246,6 @@ in
 
       tray = {
         spacing = 12;
-      };
-
-      "group/power" = {
-        orientation = "inherit";
-        drawer = {
-          transition-duration = 500;
-          children-class = "not-power";
-          transition-left-to-right = false;
-        };
-        modules = [
-          "custom/power" # First element is the "group leader" and won't ever be hidden
-          "custom/quit"
-          "custom/lock"
-          "custom/reboot"
-        ];
-      };
-
-      "custom/quit" = {
-        format = "";
-        tooltip = false;
-        on-click = "hyprctl dispatch exit";
-      };
-
-      "custom/lock" = {
-        format = "";
-        tooltip = false;
-        on-click = "swaylock";
-      };
-
-      "custom/reboot" = {
-        format = "";
-        tooltip = false;
-        on-click = "reboot";
-      };
-
-      "custom/power" = {
-        format = "";
-        tooltip = false;
-        on-click = "shutdown now";
       };
     };
   };

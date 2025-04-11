@@ -1,22 +1,11 @@
-* {
-    background:             #{{base00}}B3;
-    background-solid:       #{{base00}}FF;
-    background-alt:         #{{base01}}4D;
-    foreground:             #{{base05}}FF;
-    selected:               #{{base0A}}FF;
-    border-highlight:       #{{base02}}1A;
-    selected-tinted:        #{{base09}}99;
-    active:                 #{{base0B}}FF;
-    urgent:                 #{{base08}}FF;
-    font-normal:            "CaskaydiaCove Nerd Font 11";
-    font-bold:              "CaskaydiaCove Nerd Font Bold 11";
-}
+@import  "~/.config/rofi/colors.rasi"
 
 configuration {
-	modi:                       "drun,emoji,ssh,window,filebrowser,calc";
+	modi:                       "drun,emoji,clipboard:~/.config/rofi/modes/clipboard,ssh,window,filebrowser,calc";
     show-icons:                 true;
     display-drun:               "  Apps";
-    display-calc:               "󰪚  Calc";
+    display-clipboard:          "  Clipboard";
+    display-calc:               "󰪚  Calculator";
     display-emoji:              "  Emoji";
     display-filebrowser:        "  Files";
     display-window:             "  Windows";

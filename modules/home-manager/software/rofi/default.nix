@@ -4,6 +4,11 @@
   ...
 }:
 {
+  home.packages = with pkgs; [
+    cliphist # Clipboard History
+    rofi-bluetooth
+  ];
+
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -11,16 +16,12 @@
       rofi-emoji-wayland
       rofi-calc
     ];
-    theme = (
-      config.lib.stylix.colors {
-        template = builtins.readFile ./theme.rasi.mustache;
-        extension = "rasi";
-      }
-    );
+
+    theme = ./theme.rasi;
 
     extraConfig = {
       # ---------- General setting ----------
-      modi = "drun,filebrowser,window,calc,emoji";
+      modi = "drun,filebrowser,window,clipboard,calc,emoji";
       case-sensitive = false;
       cycle = true;
       filter = "";
@@ -95,4 +96,15 @@
       kb-remove-word-back = "Control+BackSpace";
     };
   };
+
+  xdg.configFile."rofi/colors.rasi".source = (
+    config.lib.stylix.colors {
+      template = builtins.readFile ./colors.rasi.mustache;
+      extension = "rasi";
+    }
+  );
+
+  xdg.configFile."rofi/layouts/screenshot.rasi".source = ./screenshot.rasi;
+  xdg.configFile."rofi/layouts/powermenu.rasi".source = ./powermenu.rasi;
+  xdg.configFile."rofi/modes/clipboard".source = ./clipboard.sh;
 }
