@@ -11,6 +11,7 @@
     ./zoxide.nix
     ./direnv.nix
     ./git.nix
+    ./lsd.nix
   ];
 
   home.packages = with pkgs; [
