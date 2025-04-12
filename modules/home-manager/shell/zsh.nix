@@ -1,4 +1,7 @@
 { pkgs, lib, ... }:
+let
+  lsd = "${pkgs.lsd}/bin/lsd";
+in
 {
   programs.zsh = {
     enable = true;
@@ -23,6 +26,8 @@
     shellAliases = {
       e = "emacsclient";
       rm = "${pkgs.trash-cli}/bin/trash";
+      ls = lsd;
+      ll = "${lsd} -l";
     };
 
     completionInit = ''
