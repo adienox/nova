@@ -9,6 +9,11 @@ in
     enableCompletion = true;
     autocd = true;
     dotDir = ".config/zsh";
+    dirHashes = {
+      docs = "$HOME/Documents";
+      vids = "$HOME/Videos";
+      dl = "$HOME/Downloads";
+    };
 
     historySubstringSearch.enable = true;
     history = {
