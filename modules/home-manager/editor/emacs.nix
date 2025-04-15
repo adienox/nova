@@ -19,28 +19,6 @@
     ffmpegthumbnailer
     nodePackages.prettier
 
-    # python stuff
-    python313Packages.flake8
-    python313Packages.python-lsp-server
-    python313Packages.ipython
-
-    # c stuff
-    clang-tools
-
-    # nix stuff
-    nixfmt-rfc-style
-    statix
-    nixd
-
-    # web stuff
-    vscode-langservers-extracted
-
-    # bash stuff
-    bash-language-server
-
-    # go stuff
-    go
-
     (makeDesktopItem {
       name = "org-protocol";
       exec = "emacsclient %u";
