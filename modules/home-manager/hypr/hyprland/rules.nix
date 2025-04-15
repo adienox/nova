@@ -64,7 +64,6 @@
         "opacity 1, class:floating"
         "opacity 1, class:discord, fullscreen:1"
 
-        "opacity 0.9, class:zen"
         "opacity 0.9, class:vesktop"
       ];
       workspace = [
