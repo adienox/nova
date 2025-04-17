@@ -27,9 +27,9 @@ in
       modules-center = [ "custom/playerlabel" ];
 
       modules-right = [
-        "battery"
         "group/bt"
         "group/net"
+        "battery"
         "group/audio"
         "group/time"
         "tray"

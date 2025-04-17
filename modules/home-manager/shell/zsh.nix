@@ -33,6 +33,7 @@ in
       rm = "${pkgs.trash-cli}/bin/trash";
       ls = lsd;
       ll = "${lsd} -l";
+      dc = "docker compose";
     };
 
     completionInit = ''
