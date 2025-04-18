@@ -37,7 +37,9 @@
     tlp = {
       enable = true;
       settings = {
-        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+        CPU_DRIVER_OPMODE_ON_AC = "active";
+        CPU_DRIVER_OPMODE_ON_BAT = "active";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
         CPU_SCALING_GOVERNOR_ON_AC = "powersave";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
@@ -53,17 +55,19 @@
 
         PLATFORM_PROFILE_ON_AC = "balanced";
         PLATFORM_PROFILE_ON_BAT = "low-power";
+
+        MEM_SLEEP_ON_AC = "s2idle";
+        MEM_SLEEP_ON_BAT = "deep";
+
         RUNTIME_PM_ON_AC = "auto";
         RUNTIME_PM_ON_BAT = "auto";
 
-        MEM_SLEEP_ON_AC = "deep";
-        MEM_SLEEP_ON_BAT = "deep";
         SATA_LINKPWR_ON_AC = "med_power_with_dipm";
         SATA_LINKPWR_ON_BAT = "med_power_with_dipm";
 
         NMI_WATCHDOG = 0;
         WOL_DISABLE = "Y";
-        WIFI_PWR_ON_AC = "on";
+        WIFI_PWR_ON_AC = "off";
         WIFI_PWR_ON_BAT = "on";
         DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth wifi";
       };
