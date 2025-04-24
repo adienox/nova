@@ -1,7 +1,6 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   config = {
-    services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
+    services.xserver.videoDrivers = lib.mkDefault ["modesetting"];
 
     hardware.graphics = {
       enable = lib.mkDefault true;

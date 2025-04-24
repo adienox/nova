@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   i18n.defaultLocale = "en_US.UTF-8";
 
   environment.variables = {
@@ -54,6 +53,6 @@
       google-fonts
       apple-emoji
     ];
-    fontconfig.defaultFonts.emoji = [ "Apple Color Emoji" ];
+    fontconfig.defaultFonts.emoji = ["Apple Color Emoji"];
   };
 }

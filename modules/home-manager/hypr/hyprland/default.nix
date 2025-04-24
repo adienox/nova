@@ -1,9 +1,5 @@
-{
-  pkgs,
-  ...
-}:
-{
-  imports = [ ./config.nix ];
+{pkgs, ...}: {
+  imports = [./config.nix];
   home.packages = with pkgs; [
     udiskie # AutoMount disks
     gojq # For wallpaper setting utility

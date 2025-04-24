@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./swww.nix
     ./xremap.nix
@@ -22,6 +25,7 @@
     maestral
     scrcpy
     anki-bin
+    obsidian
   ];
 
   services.mpris-proxy.enable = true;

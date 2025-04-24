@@ -1,8 +1,6 @@
-{ config, ... }:
-let
+{config, ...}: let
   colors = config.lib.stylix.colors;
-in
-{
+in {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;

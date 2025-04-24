@@ -1,8 +1,4 @@
-{
-  config,
-  ...
-}:
-{
+{config, ...}: {
   wayland.windowManager.hyprland = {
     settings = {
       "$MOD" = "SUPER";
@@ -20,6 +16,7 @@
         # Applications
         "$MOD, W, exec, $SCRIPTS/focus.sh zen zen"
         "$MOD, E, exec, $SCRIPTS/emacs.sh"
+        "$MOD, O, exec, $SCRIPTS/focus.sh obsidian obsidian"
 
         ", XF86Calculator, exec, gnome-calculator"
 

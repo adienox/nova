@@ -2,12 +2,11 @@
   config,
   pkgs,
   ...
-}:
-let
-  browser = [ "zen.desktop" ];
-  image-viewer = [ "imv.desktop" ];
-  video-player = [ "mpv.desktop" ];
-  document-viewer = [ "org.pwmt.zathura.desktop" ];
+}: let
+  browser = ["zen.desktop"];
+  image-viewer = ["imv.desktop"];
+  video-player = ["mpv.desktop"];
+  document-viewer = ["org.pwmt.zathura.desktop"];
   telegram = [
     "org.telegram.desktop.desktop"
     "io.github.kukuruzka165.materialgram.desktop"
@@ -27,8 +26,8 @@ let
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
-    "x-scheme-handler/chrome" = [ "chromium-browser.desktop" ];
-    "x-scheme-handler/org-protocol" = [ "emacsclient.desktop" ];
+    "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
+    "x-scheme-handler/org-protocol" = ["emacsclient.desktop"];
 
     "application/pdf" = document-viewer;
     "application/epub+zip" = document-viewer;
@@ -40,14 +39,13 @@ let
     "image/png" = image-viewer;
     "image/jpg" = image-viewer;
     "image/gif" = image-viewer;
-    "x-scheme-handler/discord" = [ "discord.desktop" ];
-    "x-scheme-handler/spotify" = [ "spotify.desktop" ];
+    "x-scheme-handler/discord" = ["discord.desktop"];
+    "x-scheme-handler/spotify" = ["spotify.desktop"];
     "x-scheme-handler/tg" = telegram;
     "x-scheme-handler/tonsite" = telegram;
   };
-in
-{
-  home.packages = [ pkgs.xdg-utils ];
+in {
+  home.packages = [pkgs.xdg-utils];
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [

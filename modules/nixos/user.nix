@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   options = {
     user.enable = lib.mkEnableOption "enable user module";
     user.name = lib.mkOption {

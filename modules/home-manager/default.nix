@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./stylix.nix
     ./secrets.nix

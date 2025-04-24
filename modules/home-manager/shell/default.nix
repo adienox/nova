@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./atuin.nix
     ./kitty.nix
@@ -13,6 +16,8 @@
     ./git.nix
     ./lsd.nix
     ./bat.nix
+    ./lazygit.nix
+    ./tmux
   ];
 
   home.packages = with pkgs; [
@@ -22,6 +27,22 @@
     imagemagick
     p7zip
   ];
+
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      keybind = [
+        "ctrl+shift+h=goto_split:left"
+        "ctrl+shift+j=goto_split:down"
+        "ctrl+shift+k=goto_split:up"
+        "ctrl+shift+l=goto_split:right"
+        "ctrl+shift+v=new_split:right"
+        "ctrl+shift+s=new_split:down"
+        "alt+h=previous_tab"
+        "alt+l=next_tab"
+      ];
+    };
+  };
 
   home.sessionVariables = {
     FLAKE = "${config.home.homeDirectory}/nova";

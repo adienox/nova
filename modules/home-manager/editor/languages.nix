@@ -1,9 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
-
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # python stuff
     python313Packages.flake8
@@ -15,6 +10,7 @@
 
     # nix stuff
     nixfmt-rfc-style
+    alejandra
     statix
     nixd
 
@@ -36,5 +32,10 @@
     rustc
     rust-analyzer
     rustfmt
+
+    tree-sitter
+    lua-language-server
+    nodejs-slim
+    yamlfmt
   ];
 }

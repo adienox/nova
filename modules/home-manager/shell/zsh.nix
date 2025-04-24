@@ -1,8 +1,10 @@
-{ pkgs, lib, ... }:
-let
-  lsd = "${pkgs.lsd}/bin/lsd";
-in
 {
+  pkgs,
+  lib,
+  ...
+}: let
+  lsd = "${pkgs.lsd}/bin/lsd";
+in {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -34,6 +36,7 @@ in
       ls = lsd;
       ll = "${lsd} -l";
       dc = "docker compose";
+      v = "${pkgs.neovim}/bin/nvim";
     };
 
     completionInit = ''

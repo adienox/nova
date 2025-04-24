@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.darkman = {
     enable = true;
     darkModeScripts = {
@@ -30,7 +29,7 @@
   systemd.user.timers = {
     darkman-light = {
       Unit.Description = "Timer to set Darkman to light mode";
-      Install.WantedBy = [ "timers.target" ];
+      Install.WantedBy = ["timers.target"];
       Timer = {
         OnCalendar = "*-*-* 6:00:00";
         Persistent = true;
@@ -38,7 +37,7 @@
     };
     darkman-dark = {
       Unit.Description = "Timer to set Darkman to dark mode";
-      Install.WantedBy = [ "timers.target" ];
+      Install.WantedBy = ["timers.target"];
       Timer = {
         OnCalendar = "*-*-* 17:30:00";
         Persistent = true;

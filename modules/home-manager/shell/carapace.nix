@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  home.packages = [ pkgs.carapace ];
+{pkgs, ...}: {
+  home.packages = [pkgs.carapace];
 
   programs.zsh.completionInit = ''
     export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional

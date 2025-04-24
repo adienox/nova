@@ -2,8 +2,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   # Disable Watchdogs
   # https://wiki.archlinux.org/title/Improving_performance#Watchdogs
   # https://wiki.archlinux.org/title/Power_management#Disabling_NMI_watchdog
@@ -23,8 +22,8 @@
       "vm.dirty_writeback_centisecs" = 1500;
       "vm.laptop_mode" = 5;
     };
-    kernelModules = [ "acpi_call" ];
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    kernelModules = ["acpi_call"];
+    extraModulePackages = with config.boot.kernelPackages; [acpi_call];
   };
 
   services.gvfs.enable = true;
@@ -56,7 +55,7 @@
         PLATFORM_PROFILE_ON_AC = "balanced";
         PLATFORM_PROFILE_ON_BAT = "low-power";
 
-        MEM_SLEEP_ON_AC = "s2idle";
+        MEM_SLEEP_ON_AC = "deep";
         MEM_SLEEP_ON_BAT = "deep";
 
         RUNTIME_PM_ON_AC = "auto";

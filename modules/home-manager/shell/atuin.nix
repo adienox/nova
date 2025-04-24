@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   # To import history from zsh
   # export HISTFILE && atuin import auto
   programs.atuin = {
@@ -39,15 +38,15 @@
     atuin = {
       Unit = {
         Description = "Atuin daemon";
-        PartOf = [ "default.target" ];
-        After = [ "network.target" ];
+        PartOf = ["default.target"];
+        After = ["network.target"];
       };
       Service = {
         ExecStartPre = "${pkgs.coreutils}/bin/rm -f  ${config.xdg.dataHome}/atuin/atuin.sock";
         ExecStart = "${pkgs.atuin}/bin/atuin daemon";
         Restart = "on-failure";
       };
-      Install.WantedBy = [ "default.target" ];
+      Install.WantedBy = ["default.target"];
     };
   };
 }

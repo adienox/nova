@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
 
   brightness-fade = pkgs.writeShellApplication {
@@ -19,8 +18,7 @@ let
       ${pkgs.systemd}/bin/systemctl suspend
     fi
   '';
-in
-{
+in {
   services.hypridle = {
     enable = true;
     settings = {

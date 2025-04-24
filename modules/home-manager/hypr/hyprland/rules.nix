@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   wayland.windowManager.hyprland = {
     settings = {
       windowrule = [
@@ -65,6 +64,7 @@
         "opacity 1, class:discord, fullscreen:1"
 
         "opacity 0.9, class:vesktop"
+        "opacity 0.99, class:obsidian"
       ];
       workspace = [
         "1, monitor:eDP-1, default:true"

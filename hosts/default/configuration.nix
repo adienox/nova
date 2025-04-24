@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/networking.nix
@@ -23,14 +25,14 @@
 
   # loading of a kernel module is done by using modprobe
   # listing loaded kernel modules is done by lsmod
-  boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
+  boot.extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
 
   # here i2c-8 device name is found by trying all the devices in the path
   # using ddcutil getvcp 10 -b * where * is the device id
   #FIXME: make the following code run after booting to enable backlight control of monitor
   services.xserver.displayManager.setupCommands = ''
-    echo 'ddcci 0x37' | tee /sys/bus/i2c/devices/i2c-8/new_device
     ${pkgs.kmod}/bin/modprobe ddcci_backlight
+    echo 'ddcci 0x37' | tee /sys/bus/i2c/devices/i2c-8/new_device
   '';
 
   user.enable = true;

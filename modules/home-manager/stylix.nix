@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   shellPkgs = with pkgs; [
     home-manager
     coreutils
@@ -12,9 +11,7 @@ let
     dconf
     procps
   ];
-in
-{
-
+in {
   stylix = {
     enable = true;
 
@@ -89,7 +86,7 @@ in
     polarity = "light";
     cursor.name = "Bibata-Modern-Classic";
 
-    opacity.terminal = 0.6;
+    opacity.terminal = 0.5;
 
     override = {
       base00 = "#FBF7F0";

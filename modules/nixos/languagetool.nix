@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # https://gist.github.com/CRTified/9d996a6a7c548ca42fa3672eee95da92
   services.languagetool = {
     enable = true;

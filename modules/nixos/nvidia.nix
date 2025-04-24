@@ -1,9 +1,11 @@
-{ pkgs, lib, ... }:
 {
-
+  pkgs,
+  lib,
+  ...
+}: {
   specialisation = {
     on-the-go.configuration = {
-      system.nixos.tags = [ "on-the-go" ];
+      system.nixos.tags = ["on-the-go"];
       # disable nvidia, very nice battery life.
       boot.extraModprobeConfig = ''
         blacklist nouveau
@@ -33,8 +35,8 @@
   };
 
   # Tell Xorg to use the nvidia driver
-  services.xserver.videoDrivers = [ "nvidia" ];
-  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  services.xserver.videoDrivers = ["nvidia"];
+  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
 
   hardware = {
     # Make sure opengl is enabled

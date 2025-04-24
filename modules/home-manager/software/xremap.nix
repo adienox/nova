@@ -1,6 +1,5 @@
-{ inputs, ... }:
-{
-  imports = [ inputs.xremap.homeManagerModules.default ];
+{inputs, ...}: {
+  imports = [inputs.xremap.homeManagerModules.default];
 
   services.xremap = {
     withHypr = true;

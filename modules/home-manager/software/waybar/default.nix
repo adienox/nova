@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-let
-  colors = config.lib.stylix.colors;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  colors = config.lib.stylix.colors;
+in {
   home.packages = with pkgs; [
     noto-fonts-cjk-sans # Fonts
     icomoon-feather
@@ -24,7 +26,7 @@ in
         "privacy"
       ];
 
-      modules-center = [ "custom/playerlabel" ];
+      modules-center = ["custom/playerlabel"];
 
       modules-right = [
         "group/bt"
@@ -68,6 +70,7 @@ in
         icon = true;
         rewrite = {
           ".*GNU Emacs.*" = "Emacs";
+          ".*- Obsidian .*" = "Obsidian";
           "" = "Desktop";
         };
         separate-outputs = true;
@@ -215,7 +218,7 @@ in
             days = "<span color='#${colors.base05}'><b>{}</b></span>";
             weeks = "<span color='#${colors.base0C}'><b>W{}</b></span>";
             weekdays = "<span color='#${colors.base0A}'><b>{}</b></span>";
-            today = "<span color='#${colors.base08}'><b>{}</b></span>";
+            today = "<span color='#${colors.base0B}'><b>{}</b></span>";
           };
         };
         actions = {

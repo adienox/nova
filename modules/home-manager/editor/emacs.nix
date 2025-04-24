@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     cmake
     gnumake
@@ -25,15 +21,15 @@
       comment = "Org protocol";
       desktopName = "org-protocol";
       type = "Application";
-      mimeTypes = [ "x-scheme-handler/org-protocol" ];
+      mimeTypes = ["x-scheme-handler/org-protocol"];
     })
   ];
 
   programs.emacs = {
     enable = true;
     package = pkgs.emacs30-pgtk;
-    extraPackages =
-      epkgs: with epkgs; [
+    extraPackages = epkgs:
+      with epkgs; [
         pdf-tools
         org-pdftools
         mu4e

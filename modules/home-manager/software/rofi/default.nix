@@ -2,8 +2,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     cliphist # Clipboard History
     rofi-bluetooth

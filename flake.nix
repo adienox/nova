@@ -27,39 +27,43 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
-  outputs =
-    { nixpkgs, home-manager, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [
-          (import ./packages)
-        ];
-      };
-    in
-    {
-      nixosConfigurations.anomaly = nixpkgs.lib.nixosSystem {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [
+        (import ./packages)
+      ];
+    };
+  in {
+    nixosConfigurations.anomaly = nixpkgs.lib.nixosSystem {
+      inherit pkgs;
+      modules = [
+        ./hosts/default/configuration.nix
+      ];
+      specialArgs = {inherit system inputs;};
+    };
+
+    homeConfigurations = {
+      nox = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./hosts/default/configuration.nix
+          inputs.stylix.homeManagerModules.stylix
+          inputs.nix-index-db.hmModules.nix-index
+          ./hosts/default/home.nix
         ];
-        specialArgs = { inherit system inputs; };
-      };
-
-      homeConfigurations = {
-        nox = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            inputs.stylix.homeManagerModules.stylix
-            inputs.nix-index-db.hmModules.nix-index
-            ./hosts/default/home.nix
-          ];
-          extraSpecialArgs = { inherit inputs; };
-        };
+        extraSpecialArgs = {inherit inputs;};
       };
     };
+  };
 }

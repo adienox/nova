@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   services.xremap = {
     serviceMode = "user";
     userName = config.user.name;

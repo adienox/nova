@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./languagetool.nix
     ./services.nix
@@ -57,7 +60,7 @@
     ];
 
     # enable zsh autocompletion for system packages (systemd, etc)
-    pathsToLink = [ "/share/zsh" ];
+    pathsToLink = ["/share/zsh"];
 
     # setting the ~/.local/bin to be in path for every user
     localBinInPath = true;
@@ -72,7 +75,7 @@
   hardware.uinput.enable = true;
 
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     package = pkgs.nixVersions.latest;
     settings = {
       warn-dirty = false;
@@ -88,15 +91,11 @@
       ];
       substituters = [
         "https://hyprland.cachix.org"
+        "https://ghostty.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      ];
-      extra-substituters = [
-        "https://anyrun.cachix.org"
-      ];
-      extra-trusted-public-keys = [
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+        "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
       ];
     };
   };

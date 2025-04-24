@@ -3,12 +3,10 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   colors = config.lib.stylix.colors;
-in
-{
-  home.packages = with pkgs; [ libnotify ];
+in {
+  home.packages = with pkgs; [libnotify];
 
   services.mako = {
     enable = true;

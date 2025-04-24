@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services = {
     gnome.gnome-keyring.enable = true;
     dbus.enable = true;
@@ -49,7 +48,7 @@
     '';
 
     # needed for GNOME services outside of GNOME Desktop
-    dbus.packages = [ pkgs.gcr ];
+    dbus.packages = [pkgs.gcr];
 
     syncthing = {
       enable = true;
@@ -62,9 +61,9 @@
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
-  home.packages = [ pkgs.comma ];
+{pkgs, ...}: {
+  home.packages = [pkgs.comma];
   programs.nix-index.enable = true;
 }
