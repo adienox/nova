@@ -103,6 +103,7 @@ in {
         text = ''
           "$(home-manager generations | head -1 | rg -o '/[^ ]*')"/specialisation/light/activate
           dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+          touch ~/.config/zellij/config.kdl
           pkill -SIGUSR1 zsh
         '';
       }
@@ -117,6 +118,7 @@ in {
         text = ''
           "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate
           dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+          touch ~/.config/zellij/config.kdl
           pkill -SIGUSR1 zsh
         '';
       })

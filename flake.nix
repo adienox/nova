@@ -26,10 +26,6 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
   };
 
   outputs = {
@@ -58,7 +54,7 @@
       nox = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
           inputs.nix-index-db.hmModules.nix-index
           ./hosts/default/home.nix
         ];

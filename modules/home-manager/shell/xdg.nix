@@ -28,6 +28,7 @@
     "x-scheme-handler/unknown" = browser;
     "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
     "x-scheme-handler/org-protocol" = ["emacsclient.desktop"];
+    "x-scheme-handler/obsidian" = ["obsidian.desktop"];
 
     "application/pdf" = document-viewer;
     "application/epub+zip" = document-viewer;
@@ -59,6 +60,14 @@ in {
   xdg = {
     enable = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";
+
+    desktopEntries.obsidian = {
+      name = "Obsidian";
+      exec = "obsidian %u";
+      terminal = false;
+      icon = "obsidian";
+      mimeType = ["x-scheme-handler/obsidian"];
+    };
 
     userDirs = {
       enable = true;

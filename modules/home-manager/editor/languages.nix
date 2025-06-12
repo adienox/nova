@@ -8,14 +8,16 @@
     # c stuff
     clang-tools
 
+    # shell stuff
+    shfmt
+
     # nix stuff
-    nixfmt-rfc-style
     alejandra
-    statix
     nixd
 
     # web stuff
     vscode-langservers-extracted
+    prettierd
 
     # bash stuff
     bash-language-server
@@ -26,6 +28,7 @@
     # lua stuff
     luajitPackages.lua-lsp
     stylua
+    lua-language-server
 
     # rust stuff
     cargo
@@ -33,9 +36,6 @@
     rust-analyzer
     rustfmt
 
-    tree-sitter
-    lua-language-server
-    nodejs-slim
     yamlfmt
   ];
 }

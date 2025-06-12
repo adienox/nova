@@ -9,6 +9,7 @@
     ./starship.nix
     ./xdg.nix
     ./zsh.nix
+    ./nushell
     ./nix-index-db.nix
     ./carapace.nix
     ./zoxide.nix
@@ -17,7 +18,7 @@
     ./lsd.nix
     ./bat.nix
     ./lazygit.nix
-    ./tmux
+    ./zellij.nix
   ];
 
   home.packages = with pkgs; [
@@ -28,24 +29,8 @@
     p7zip
   ];
 
-  programs.ghostty = {
-    enable = true;
-    settings = {
-      keybind = [
-        "ctrl+shift+h=goto_split:left"
-        "ctrl+shift+j=goto_split:down"
-        "ctrl+shift+k=goto_split:up"
-        "ctrl+shift+l=goto_split:right"
-        "ctrl+shift+v=new_split:right"
-        "ctrl+shift+s=new_split:down"
-        "alt+h=previous_tab"
-        "alt+l=next_tab"
-      ];
-    };
-  };
-
   home.sessionVariables = {
-    FLAKE = "${config.home.homeDirectory}/nova";
+    NH_FLAKE = "${config.home.homeDirectory}/nova";
 
     XDG_SESSION_TYPE = "wayland";
 

@@ -1,0 +1,24 @@
+diff --git a/catppuccin-mocha.nu b/catppuccin-mocha.nu
+index 977233a..442f596 100644
+--- a/themes/nu-themes/catppuccin-mocha.nu
++++ b/themes/nu-themes/catppuccin-mocha.nu
+@@ -24,9 +24,9 @@ export def main [] {
+         surface2: "#585b70"
+         surface1: "#45475a"
+         surface0: "#313244"
+-        base: "#1e1e2e"
+-        mantle: "#181825"
+-        crust: "#11111b"
++        base: "#000000"
++        mantle: "#090909"
++        crust: "#181825"
+     }
+ 
+     return {
+@@ -149,4 +149,4 @@ export module activate {
+ }
+ 
+ # Activate the theme when sourced
+-use activate
+\ No newline at end of file
++use activate

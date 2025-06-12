@@ -15,7 +15,7 @@
 
         # Applications
         "$MOD, W, exec, $SCRIPTS/focus.sh zen zen"
-        "$MOD, E, exec, $SCRIPTS/emacs.sh"
+        "$MOD, E, exec, emacsclient -c -a ''"
         "$MOD, O, exec, $SCRIPTS/focus.sh obsidian obsidian"
 
         ", XF86Calculator, exec, gnome-calculator"
@@ -114,6 +114,7 @@
         # Recording
         "$MOD, R, exec, $SCRIPTS/screenrecord.sh"
         "$MOD, Prior, exec, $SCRIPTS/screenrecord.sh"
+        "SHIFT, XF86HomePage, exec, systemctl suspend"
       ];
 
       bindl = [

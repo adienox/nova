@@ -6,7 +6,6 @@
     udisks2.enable = true;
     gvfs.enable = true; # Nautilus Trash
     gnome.sushi.enable = true; # Nautilus file preview
-    dictd.enable = true;
     blueman.enable = true;
 
     xserver.xkb = {

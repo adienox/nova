@@ -17,7 +17,7 @@
 
   home.packages = with pkgs; [
     nautilus
-    vesktop
+    legcord
     telegram-desktop
     qbittorrent-enhanced
     inputs.zen-browser.packages.${pkgs.system}.default
@@ -25,7 +25,7 @@
     maestral
     scrcpy
     anki-bin
-    obsidian
+    zathura
   ];
 
   services.mpris-proxy.enable = true;

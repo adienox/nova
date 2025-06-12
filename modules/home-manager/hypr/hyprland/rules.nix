@@ -25,7 +25,7 @@
 
         #Size, Move, and Pin rules
         "move 1430 45, title:^(Discord Popout)$"
-        "pin, title:^(Discord Popout)$"
+        "pin,          title:^(Discord Popout)$"
         "size 485 300, title:^(Discord Popout)$"
         "size 800 500, class:floating"
         "size 800 500, class:imv"
@@ -40,7 +40,6 @@
         "workspace 5, class:vesktop"
 
         # Fullscreen Rules
-        "fullscreen, class:emacs"
         "fullscreen, class:mpv"
         "fullscreen, class:org.pwmt.zathura"
 
@@ -48,23 +47,21 @@
         "center, class:floating"
         "center, class:imv"
 
+        # app-launcher
+        "float,        title:app-launcher"
+        "center,       title:app-launcher"
+        "opacity 1,    title:app-launcher"
+        "size 920 430, title:app-launcher"
+
         # picture in picture
-        "workspace 1, title:Picture-in-Picture"
-        "fullscreen,  title:Picture-in-Picture"
+        "workspace 1,    title:Picture-in-Picture"
+        "fullscreen,     title:Picture-in-Picture"
+        "noinitialfocus, title:Picture-in-Picture"
 
         # Idle inhibit rules
         "idleinhibit fullscreen, class:zen"
         "idleinhibit fullscreen, class:mpv"
         "idleinhibit focus,      class:discord"
-
-        # Opacity Rules
-        "opacity 0.7, floating:1"
-
-        "opacity 1, class:floating"
-        "opacity 1, class:discord, fullscreen:1"
-
-        "opacity 0.9, class:vesktop"
-        "opacity 0.99, class:obsidian"
       ];
       workspace = [
         "1, monitor:eDP-1, default:true"

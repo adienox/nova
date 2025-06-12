@@ -55,6 +55,7 @@
       Defaults env_reset,pwfeedback
     '';
     pam.services.${config.user.name}.enableGnomeKeyring = true;
+    pam.services.hyprlock = {};
 
     rtkit.enable = true;
   };

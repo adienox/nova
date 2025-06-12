@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     cmake
     gnumake
@@ -10,32 +14,32 @@
     gdrive3
     pandoc
     emacsclient-commands
-    hunspellDicts.en_US-large
     vips
     ffmpegthumbnailer
     nodePackages.prettier
-
-    (makeDesktopItem {
-      name = "org-protocol";
-      exec = "emacsclient %u";
-      comment = "Org protocol";
-      desktopName = "org-protocol";
-      type = "Application";
-      mimeTypes = ["x-scheme-handler/org-protocol"];
-    })
+    yt-dlp
+    # spellcheck
+    (aspellWithDicts (dicts: with dicts; [en en-computers en-science]))
+    # email
+    mu
+    isync
+    protonmail-bridge
+    # calendar
+    khal
+    vdirsyncer
+    # lookup
+    ripgrep
+    wordnet
   ];
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs30-pgtk;
+    package = pkgs.emacs-pgtk;
     extraPackages = epkgs:
       with epkgs; [
-        pdf-tools
-        org-pdftools
+        vterm
         mu4e
-        nov
-        djvu
-        jinx
+        pdf-tools
       ];
   };
 
@@ -43,5 +47,66 @@
     enable = true;
     client.enable = true;
     startWithUserSession = "graphical";
+  };
+
+  systemd.user = {
+    services = {
+      protonmail-bridge = {
+        Unit = {
+          Description = "Protonmail Bridge";
+          PartOf = ["default.target"];
+          After = ["network-online.target"];
+          Wants = ["network-online.target"];
+        };
+        Service = {
+          ExecStart = "${pkgs.protonmail-bridge}/bin/protonmail-bridge -n";
+          Restart = "on-failure";
+        };
+        Install.WantedBy = ["default.target"];
+      };
+      maestral-notes = {
+        Unit = {
+          Description = "Sync notes to dropbox";
+          PartOf = ["default.target"];
+          After = ["network-online.target"];
+          Wants = ["network-online.target"];
+        };
+        Service = {
+          ExecStart = "${pkgs.maestral}/bin/maestral start --config-name='notes'";
+          Restart = "on-failure";
+        };
+        Install.WantedBy = ["default.target"];
+      };
+      vdirsyncer-sync = {
+        Unit = {
+          Description = "Sync Calenders";
+          After = ["network-online.target"];
+          Wants = ["network-online.target"];
+        };
+        Service = {
+          ExecStart = "${pkgs.vdirsyncer}/bin/vdirsyncer sync";
+          Type = "oneshot";
+        };
+      };
+    };
+    timers = {
+      vdirsyncer-sync = {
+        Unit.Description = "Timer to start vdirsyncer sync";
+        Install.WantedBy = ["timers.target"];
+        Timer = {
+          OnBootSec = "5min";
+          OnUnitActiveSec = "11min";
+        };
+      };
+    };
+    paths = {
+      vdirsyncer-sync = {
+        Unit.Description = "Path change to start vdirsyncer sync";
+        Install.WantedBy = ["default.target"];
+        Path = {
+          PathChanged = "${config.home.homeDirectory}/Documents/calendars/personal";
+        };
+      };
+    };
   };
 }
